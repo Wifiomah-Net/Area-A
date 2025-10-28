@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WIFIOMAH.Net</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      background: url('https://images.pexels.com/photos/18377777/pexels-photo-18377777.jpeg')
+                  no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+    }
+
+    /* Script CSS*/
+    /* ===== HEADER ===== */
+   header {
+  padding: 25px 20px;
+  background: #001220cc;
+  border-bottom: 2px solid #00f5ff;
+  border-radius: 0 0 20px 20px;
+  animation: fadeIn 2s ease-in-out;
+  text-align: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.cluster { /* Area A */
+  font-size: 0.95rem;
+  color: #fff;
+  margin-top: 0;
+  position: relative;
+  top: -8px; /* naik lebih dekat ke slogan */
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+/* Di HP biar tetap pas */
+@media (max-width: 768px) {
+  .cluster {
+    top: -4px;
+  }
+}
+
+
+/* Laptop layout – pastikan semua teks di tengah vertikal */
+@media (min-width: 769px) {
+  .header-left {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-text {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+header h1 {
+  font-size: 2.6rem;
+  margin: 0;
+  background: linear-gradient(120deg, #00f5ff 20%, gold 40%, #00f5ff 60%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineText 4s linear infinite;
+  line-height: 1.1;
+  position: relative;
+  top: 6px; /* turun pas di tengah logo */
+}
+
+/* biar tetap rapi di HP */
+@media (max-width: 600px) {
+  header h1 {
+    top: 2px;
+    font-size: 2.1rem;
+  }
+}
+
+/* Kilau halus bergerak pelan */
+@keyframes shimmerText {
+  0% {
+    background-position: 0% center;
+    filter: brightness(1);
+  }
+  50% {
+    background-position: 200% center;
+    filter: brightness(1.3);
+  }
+  100% {
+    background-position: 0% center;
+    filter: brightness(1);
+  }
+}
+
+.slogan {
+  font-size: 1rem;
+  color: gold;
+  margin: 6px 0 0 0; /* jarak atas lebih kecil */
+  letter-spacing: 0.4px;
+  animation: fadeIn 2.5s ease-in-out;
+  position: relative;
+  top: 0px; /* sedikit naik biar lebih dekat ke nama web */
+}
+
+.cluster {
+  font-size: 0.95rem;
+  color: #fff;
+  margin: 4px 0 0 0;
+  letter-spacing: 0.5px;
+  animation: fadeIn 3s ease-in-out;
+  position: relative;
+  top: -2px; /* naik sedikit biar dekat ke slogan */
+}
+
+/* Responsif biar di HP jarak tetap nyaman */
+@media (max-width: 600px) {
+  .slogan {
+    margin-top: 2px;
+    top: -1px;
+  }
+  .cluster {
+    top: -3px;
+  }
+}
+
+    @keyframes shineText { to { background-position: 200% center; } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    /* Efek muncul halus pada header */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header {
+  animation: fadeSlideUp 1.3s ease-out both;
+}
+
+/* Logo */
+header img {
+  height: 120px; /* Ukuran */
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px; /* Jarak logo dengan text */
+  flex-wrap: wrap;
+}
+
+.header-text {
+  animation: fadeSlideUp 1.4s ease-out both;
+  animation-delay: 0.4s;
+}
+
+.cluster {
+  animation: fadeSlideUp 1.6s ease-out both;
+  animation-delay: 0.6s;
+}
+
+
+    /* ===== PACKAGES ===== */
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 40px 20px;
+    }
+
+    .package {
+  background: rgba(0, 20, 40, 0.8); /* sedikit lebih solid biar teks tetap jelas */
+  border-radius: 18px;
+  padding: 28px 20px;
+  border: 2px solid rgba(0,245,255,0.5);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeSlide 1s forwards;
+  transition: all 0.3s ease;
+  /* hapus blur */
+  /* backdrop-filter: blur(12px); <-- ini dihapus */
+}
+
+
+    @keyframes fadeSlide { to { opacity: 1; transform: translateY(0); } }
+
+    .package:nth-child(1) { animation-delay: 0.3s; }
+    .package:nth-child(2) { animation-delay: 0.5s; }
+    .package:nth-child(3) { animation-delay: 0.7s; }
+    .package:nth-child(4) { animation-delay: 0.9s; }
+    .package:nth-child(5) { animation-delay: 1.1s; }
+
+    .package:hover {
+      transform: translateY(-6px) scale(1.02);
+      border: 1px solid gold;
+    }
+
+    .package h2 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.package h2 span {
+  display: inline-block;
+}
+
+.package h2 span:first-child { /* "Up to" */
+  color: #00f5ff;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.package h2 span:nth-child(2) { /* angka Mbps */
+  color: #00f5ff;
+  font-weight: 1000; /* tebal */
+  font-size: 2.5rem; 
+  font-family: 'Poppins', 'Nunito', 'Quicksand', cursive; /* font rounded, bubble feel */
+}
+
+.package h2 span:last-child { /* "Mbps" */
+  color: #00f5ff;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.package h2 {
+  margin: -5px 0 8px 0; /* naikkan h2 supaya kolom tidak kosong di atas */
+}
+
+.package .price {
+  margin-top: 0; /* rapat ke angka Mbps */
+}
+
+
+    /* Hanya untuk harga di paket */
+.package .price {
+  color: gold;
+  font-weight: bold;
+  margin-top: -15px;
+}
+
+.package .price .angka {
+  font-size: 2rem; /* angka besar */
+}
+
+.package .price .kecil {
+  font-size: 0.9rem;      /* tetap kecil */
+  margin-left: 0px;       /* rapat ke angka */
+  display: inline-block;  
+  vertical-align: baseline; /* sejajar dengan angka utama */
+}
+
+    .package ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px 0;
+      text-align: left;
+    }
+
+    .package ul li {
+      margin: 6px 0;
+      color: #ddd;
+      font-size: 0.95rem;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .package ul li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: gold;
+      font-size: 0.85rem;
+    }
+
+    .btn-gold {
+  position: relative;
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 30px;
+  background: linear-gradient(270deg, #ffd700, #ffb300, #ffcc33, #ffea00, #ffb300, #ffd700);
+  background-size: 400% 400%;
+  color: #000814;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: goldShine 3s linear infinite;
+}
+
+@keyframes goldShine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Efek pantulan cahaya */
+.btn-gold::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75px;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 100%);
+  transform: skewX(-25deg);
+  opacity: 0.7;
+  animation: shineMove 4s ease-in-out infinite;
+}
+
+@keyframes shineMove {
+  0% { left: -75px; opacity: 0; }
+  30% { left: 120%; opacity: 0.8; }
+  100% { left: 120%; opacity: 0; }
+}
+
+.btn-gold:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+}
+
+.btn-gold:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+    .btn-gold:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, gold, #ffbf00, gold);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      background: #001220cc;
+      border-top: 2px solid #00f5ff;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    footer .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 10px 0 15px;
+    }
+
+    footer .contact-info p { margin: 6px 0; }
+    footer a {
+      color: gold;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #ffd700;
+    }
+
+    footer img {
+      width: 20px;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    /* ===== FLOATING BUTTONS ===== */
+    /* FLOATING BUTTON CS */
+.float-container {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000;
+}
+
+/* FLOATING BUTTON CS */
+.float-btn.cs {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: #ffd700; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  z-index: 10;
+}
+
+.float-btn.cs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1; /* tetap di atas border */
+}
+
+/* Garis tepi animasi tebal dan bergerak */
+.float-btn.cs::before {
+  content: '';
+  position: absolute;
+  top: -5px;       /* jarak dari tombol */
+  left: -5px;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  border-radius: 50%;
+  border: 4px solid transparent;  /* tebal garis */
+  background: conic-gradient(from 0deg, #00f5ff, gold, #00f5ff, gold);
+  -webkit-mask: radial-gradient(farthest-side, #000 97%, transparent 100%);
+  mask: radial-gradient(farthest-side, #000 97%, transparent 100%);
+  animation: rotateBorder 2.5s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotateBorder {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hover efek */
+.float-btn.cs:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+  animation: pulseCS 2s infinite;
+}
+
+@keyframes pulseCS {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Tombol tetap di atas garis */
+.float-btn.cs img {
+  position: relative;
+  z-index: 1;
+}
+
+.float-btn.cs:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+  animation: pulseCS 2s infinite;
+}
+
+@keyframes pulseCS {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+  <div class="header-left">
+    <img src="logo.png" alt="Logo WIFIOMAH.Net">
+    <div class="header-text">
+      <h1>WIFIOMAH.Net</h1>
+      <p class="slogan">"Internet Rumah, Tanpa Batas"</p>
+      <p class="cluster">Area A</p>
+    </div>
+  </div>
+</header>
+
+
+  <!-- ===== PACKAGES ===== -->
+  <section class="packages">
+  <div class="package">
+    <h2><span>Up to</span> <span>10</span> <span>Mbps</span></h2>
+    <div class="price">
+      <span class="rp">Rp</span>
+      <span class="angka">100</span>
+      <span class="kecil">.000 / bulan</span>
+    </div>
+    <ul>
+      <li>Unlimited kuota</li>
+      <li>Gratis Service</li>
+      <li>Biaya Pasang Murah</li>
+    </ul>
+    <a class="btn-gold" href="https://wa.me/6285926962506?text=Halo..%20Saya%20ingin%20berlangganan%20Paket%2010%20Mbps." target="_blank">Berlangganan</a>
+  </div>
+
+  <div class="package">
+    <h2><span>Up to</span> <span>20</span> <span>Mbps</span></h2>
+    <div class="price">
+      <span class="rp">Rp</span>
+      <span class="angka">150</span>
+      <span class="kecil">.000 / bulan</span>
+    </div>
+    <ul>
+      <li>Unlimited kuota</li>
+      <li>Gratis Service</li>
+      <li>Biaya Pasang Murah</li>
+    </ul>
+    <a class="btn-gold" href="https://wa.me/6285926962506?text=Halo..%20Saya%20ingin%20berlangganan%20Paket%2020%20Mbps." target="_blank">Berlangganan</a>
+  </div>
+
+  <div class="package">
+    <h2><span>Up to</span> <span>50</span> <span>Mbps</span></h2>
+    <div class="price">
+      <span class="rp">Rp</span>
+      <span class="angka">300</span>
+      <span class="kecil">.000 / bulan</span>
+    </div>
+    <ul>
+      <li>Unlimited kuota</li>
+      <li>Gratis Service</li>
+      <li>Biaya Pasang Murah</li>
+    </ul>
+    <a class="btn-gold" href="https://wa.me/6285926962506?text=Halo..%20Saya%20ingin%20berlangganan%20Paket%2050%20Mbps." target="_blank">Berlangganan</a>
+  </div>
+
+  <div class="package">
+    <h2><span>Up to</span> <span>75</span> <span>Mbps</span></h2>
+    <div class="price">
+      <span class="rp">Rp</span>
+      <span class="angka">400</span>
+      <span class="kecil">.000 / bulan</span>
+    </div>
+    <ul>
+      <li>Unlimited kuota</li>
+      <li>Gratis Service</li>
+      <li>Biaya Pasang Murah</li>
+    </ul>
+    <a class="btn-gold" href="https://wa.me/6285926962506?text=Halo..%20Saya%20ingin%20berlangganan%20Paket%2075%20Mbps." target="_blank">Berlangganan</a>
+  </div>
+
+  <div class="package">
+    <h2><span>Up to</span> <span>100</span> <span>Mbps</span></h2>
+    <div class="price">
+      <span class="rp">Rp</span>
+      <span class="angka">500</span>
+      <span class="kecil">.000 / bulan</span>
+    </div>
+    <ul>
+      <li>Unlimited kuota</li>
+      <li>Gratis Service</li>
+      <li>Biaya Pasang Murah</li>
+    </ul>
+    <a class="btn-gold" href="https://wa.me/6285926962506?text=Halo..%20Saya%20ingin%20berlangganan%20Paket%20100%20Mbps." target="_blank">Berlangganan</a>
+  </div>
+</section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 WIFIOMAH.Net – Semua Hak Dilindungi</p>
+    <p>Hubungi Customer Service :</p>
+    <div class="contact-info">
+      <p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+        <a href="https://wa.me/6285926962506" target="_blank">+62 859-2696-2506</a>
+      </p>
+      <p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png">
+        <a href="mailto:wifiomahh@gmail.com">wifiomahh@gmail.com</a>
+      </p>
+    </div>
+  </footer>
+
+ <!-- ===== FLOATING BUTTON CS ===== -->
+<div class="float-container">
+  <a href="https://wa.me/6285926962506?text=Halo..%20Saya%20ingin%20menanyakan%20informasi%20terkait%20WifiOmah" 
+     class="float-btn cs" target="_blank">
+    <img src="robot-cs.png" alt="CS Robot">
+  </a>
+</div>
+
+</body>
+</html>
